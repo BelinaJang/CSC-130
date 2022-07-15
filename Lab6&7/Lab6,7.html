@@ -1,0 +1,73 @@
+<html>
+<head>
+	<link href="lab6,7.css" type="text/css" rel="stylesheet">
+	<script src="lab6,7.js" defer></script>
+</head>
+<!---           PART 1               --->
+<!--- Fill in the table below with   --->
+<!--- data from the array of courses --->
+<div class="part"><h3>Part 1</h3>
+
+<table id="courseTable">
+  <tr>
+    <th>Subject</th>
+    <th>Number</th>
+    <th id="tableTitle">Title</th>
+  </tr>
+  <tr>
+    <td>BIOL</td>
+    <td>355</td>
+    <td>Evolution</td>
+  </tr>
+  <tr>
+    <td>EOS</td>
+    <td>427</td>
+    <td>Geophysics</td>
+  </tr>
+  <tr>
+    <td>MATH</td>
+    <td>451</td>
+    <td>Probability</td>
+  </tr>
+  <tr>
+    <td>PHIL</td>
+    <td>371</td>
+    <td>Logic</td>
+  </tr>
+</table>
+</div>
+
+<!---           PART 2               --->
+<!---  All done in Javascript below  --->
+<div class="part"><h3>Part 2</h3>
+  <button onclick="addCourse()">Add course</button><br>
+  <p><a href="https://web.uvic.ca/calendar2020-01/CDs/CSC/130.html" target="_blank">Click here</a> for UVic course calendar</p>
+</div>
+
+
+<!---           PART 3               --->
+<!---  Enter new course information  --->
+<!---    in the input boxes below    --->
+<div class="part"><h3>Part 3</h3>
+Subject:<input type="text" id="s_input"><br>
+Number:<input type="text" id="n_input"><br>
+Title:<input type="text" id="t_input"><br>
+
+<button onclick="addCourse2()">Add course</button>
+</div>
+
+<!---           PART 4               --->
+<!---  All done in Javascript below  --->
+<div class="part"><h3>Part 4</h3>
+
+<p id="allClasses"></p>
+<button onclick="allClasses()">List classes</button>
+
+<p id="fourth"></p>
+<button onclick="seniorYearClasses()">List senior-level classes</button>
+
+<p id="math"></p>
+<button onclick="mathClasses()">List Math classes</button>
+
+</div>
+</html>

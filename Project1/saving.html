@@ -1,0 +1,47 @@
+<html>
+<head>
+	<link href="project1-part2-prototype.css" type="text/css" rel="stylesheet">
+	<script src="project1-part2-prototype.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+</head>
+<body>
+	<div class="container">
+	  <a href="saving.html">Saving</a></li>
+	  <a href="spending.html">Spending</a></li>
+	  <a href="calculator.html">Calculator</a></li>
+	</div>
+	
+	<div id="saving">
+		<h2>Saving Journal</h2>
+		<p style = "padding-left:23px; padding-top:16px;">
+		<table class="savingtable">
+			<thead>
+			  <tr>
+				<th class="cell">Date</th>
+				<th class="cell">Amount</th>
+				<th class="cell">Note</th>
+				<th class="cell">Balance</th>
+			  </tr>
+			</thead>
+			<tbody>
+			   <tr>
+				<td class="cell">3/1</th>
+				<td class="cell">0</th>
+				<td class="cell">note</th>
+				<td class="cell">0</th>
+			  </tr>
+			</tbody>
+		</table></p>
+		<p style="padding-left: 66px;">Date Credit/Debit Amount</p>
+		<form>
+			<input id="date_input" type="text" placeholder="3/1" style="width: 78px; height: 25px">
+			<input id="parity_input" type="text" placeholder="+/-" style="width: 98px; height: 25px">
+			<input id="amount_input" type="text" placeholder="800" style="width: 62px; height: 25px">
+			<input id="note_input" type="text" placeholder="note" style="width: 62px; height: 25px">
+		</form>
+		<button onclick = "add-saving()">ADD</button>
+		
+	</div>
+
+</body>
+</html>

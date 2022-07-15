@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title>Lab 4</title>
+	<link href="lab4.css" type="text/css" rel="stylesheet">
+	<script src="lab4.js"></script>
+</head>
+<!--- PART 1 --->
+<div id="part1">
+  <h2>Part 1a</h2>
+  <button onclick="invert()">Invert colors</button>
+  <button onclick="reset()">Reset to default</button>
+  <br><br><br>
+
+  <h2>Part 1b</h2>
+  <button onclick="red()">Red</button>
+</div>
+
+
+
+<!--- PART 2 --->
+<div id="part2">
+  <h2>Part 2</h2>
+  <form>
+    Enter a background color:<br>
+    <input id="color_input" type="text" placeholder="example: RosyBrown">
+    <br><br>
+  </form>
+  <button onclick="part_two()">Change background</button>
+  <br><br>
+  
+  <form>
+    Enter a text color:<br>
+    <input id="text_color_input" type="text" placeholder="example: Red">
+    <br><br>
+  </form>
+  <button onclick="text_color()">Change text color</button>
+</div>
+
+
+
+<!--- PART 3 --->
+<div id="part3">
+  <h2>Part 3</h2>
+  <form onchange="button_selected()" id="p3">
+    <input type="radio" name="color_choice" value="Tomato">red<br>
+    <input type="radio" name="color_choice" value="LightBlue">blue<br>
+    <input type="radio" name="color_choice" value="LightGreen">green<br>
+
+    <br>
+    <input type="radio" name="color_choice" value="BlueViolet">BlueViolet<br>
+    
+  </form>
+</div>
+
+
+
+
+<!--- PART 4 --->
+<div id="part4">
+  <h2>Part 4</h2>
+  <form onchange="dropdown_choice()" id="p4">
+    <select name="dropdown" size="5">
+      <option value="White" selected>default</option>
+      <option value="Tomato">red</option>
+      <option value="LightBlue">blue</option>
+      <option value="LightGreen">green</option>
+      <option value="BurlyWood">burlyWood</option>
+      <option value="Coral">coral</option>
+    </select>
+
+    <br><br>
+  </form>
+</div>
+
+
+
+<!--- PART 5 --->
+<div>
+  <h2>Part 5</h2>
+  <form>
+    First name:<br>
+    <input id="first" type="text" placeholder="Enter your first name">
+    <br><br>
+
+    Last name:<br>
+    <input id="last" type="text" placeholder="Enter your last name">
+    <br><br>
+  </form>
+
+  <button onclick="greeting()">Submit names</button>
+  <br><br>
+</div>
+
+
+
+<!--- PART 6 --->
+<div id="part6">
+  <h2>Part 6 (bonus)</h2>
+  <form onchange="rgb_selection()" id="p6">
+    Red:
+    <input type="range" min="1" max="255" value="255" name="red">
+    <br><br>
+    Green:
+    <input type="range" min="1" max="255" value="0" name="green">
+    <br><br>
+    Blue:
+    <input type="range" min="1" max="255" step="o.1" value="0" name="blue">
+    <br><br>
+    Alpha:
+    <input type="range" min="0" max="1" step="0.05" value="1" name="alpha">
+    <br><br>
+  </form>
+</div>
+
+</html>

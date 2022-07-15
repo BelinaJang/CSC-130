@@ -1,0 +1,61 @@
+body {
+	font-size: 20pt;
+	padding: 2em;
+}
+
+/* rule for divs found within other divs */
+div div { 
+	border-radius: 5px;
+	border: 5px solid black;
+	margin: 2px;
+}
+
+.container {
+	display: flex;  
+	flex-flow: row wrap;
+}
+
+/* rule for items with parent equal to container */
+.container > * { 
+	padding: 10px;
+	/* all items minimum size is 100% width */
+	flex: 1 100%;
+}
+
+@media all and (min-width: 800px) {
+	.beside { 
+		/* the side bars can share a row */
+		flex: 1 auto;
+	}
+}
+
+@media all and (min-width: 1000px) {
+	/* main element gets 5x more space than side bars. The declaration 
+	 above for 600px allows side bars to share the row  */
+	.main	{ flex: 5 0px; }
+	.left 	{ order: 1; } 
+	.main	{ order: 2; }
+	.right	{ order: 3; }
+	.footer	{ order: 4; }
+}
+
+.top {
+	background: tomato;
+}
+
+.footer {
+	background: lightgreen;
+}
+
+.main {
+	text-align: left;
+	background: deepskyblue;
+}
+
+.left{
+	background: gold;
+}
+
+.right {
+	background: hotpink;
+}

@@ -1,0 +1,33 @@
+table,
+th,
+tr,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  background: lightgray;
+  table-layout: auto;
+}
+
+tr#part3 {
+  color: darkred;
+}
+
+#tableTitle {
+  width: 100%;
+}
+
+h3 {
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+.part {
+  text-align: center;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+}

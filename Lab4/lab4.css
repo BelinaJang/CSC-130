@@ -1,0 +1,33 @@
+div {
+  padding: 20px;
+  border: 2px solid lightgray;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  padding-top: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.todo {
+  font-style: italic;
+  color: darkgreen;
+  background-color: white;
+  display: inline;
+  padding: 4px;
+  border: 1px solid darkgreen;
+}
+
+input {
+  width: 100%;
+}
+
+#part3 input {
+  width: 12px;
+}
+
+select {
+  width: 40%;
+}

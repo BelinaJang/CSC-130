@@ -1,0 +1,64 @@
+p, h3 {
+	margin-left: 20px;
+}
+
+.container {
+	list-style: none;
+	padding: 0;
+	background-color: darkcyan;
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+a {
+	color: DarkGreen;
+}
+
+.container a {
+	text-decoration: none;
+	padding: 15px;
+	color: white;
+}
+.container a:hover {
+	background-color: cadetblue;
+}
+
+#contact a { 
+
+    color: red;
+
+} 
+
+@media all and (max-width: 800px) { 
+
+	.container {
+		justify-content: space-around;
+	}
+
+} 
+
+@media all and (max-width: 600px) { 
+
+	.container {
+		flex-direction: column;
+		align-items: center;
+		/*border-bottom-style: solid;
+		border-color: RGBA(200,255,255,0.25); this adds one long line at the buttom*/
+	}
+	
+	.container a {
+		text-align: center;
+		border: 2px solid RGBA(200,255,255,0.25);
+		flex-direction: column;
+		width: 100%;
+		/*justify-content: space-between;*/
+	}
+	
+	h3 {
+		text-align: center;
+	}
+
+}

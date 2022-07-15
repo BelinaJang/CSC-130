@@ -1,0 +1,59 @@
+<html>
+<head>
+	<link href="project1-part2-prototype.css" type="text/css" rel="stylesheet">
+	<script src="project1-part2-prototype.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+</head>
+<body>
+	<div class="container">
+	  <a href="saving.html">Saving</a></li>
+	  <a href="spending.html">Spending</a></li>
+	  <a href="calculator.html">Calculator</a></li>
+	</div>
+	
+	<div id="spending">
+		<h2>Spending Journal</h2>
+		<p style = "padding-left:23px; padding-top:16px;">
+		<table class="spendingtable">
+			<thead>
+			  <tr>
+				<th class="cell">Date</th>
+				<th class="cell">Name</th>
+				<th class="cell">Category</th>
+				<th class="cell">Amount</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td class="cell"></td>
+				<td class="cell"></td>
+				<td class="cell"></td>
+				<td class="cell"></td>
+			  </tr>
+			  <tr>
+				<td class="cell"></td>
+				<td class="cell"></td>
+				<td class="cell"></td>
+				<td class="cell"></td>
+			  </tr>
+			</tbody>
+		</table></p>
+		<p style="padding-left: 66px;">Name Category Price</p>
+		<form>
+			<input id="name_input" type="text" placeholder="3/1" style="width: 78px; height:25px;">
+			<select name="dropdown" size="5" style="width: 98px; height:25px;">
+				<option value="Grocery" selected>Grocery</option>
+				<option value="Transportation">Transportation</option>
+				<option value="Entertainment">Entertainment</option>
+				<option value="Shopping">Shopping</option>
+				<option value="Eating out">Eating out</option>
+				<option value="Snacks">Snacks</option>
+			</select>
+			<input id="amount_input" type="text" placeholder="800" style="width: 62px; height:25px;"><br>
+		</form>
+		<button onclick = "add-spending()">ADD</button>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+
+</body>
+</html>
