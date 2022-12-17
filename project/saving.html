@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title>Budgeting App</title>
+	<link href="project2-part2-prototype.css" type="text/css" rel="stylesheet">
+	<script src="project2-part2-prototype.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+</head>
+<body onload="checkSaving()">
+	<div class="container">
+	  <a href="saving.html">Saving</a></li>
+	  <a href="spending.html">Spending</a></li>
+	  <a href="calculator.html">Calculator</a></li>
+	</div>
+	
+	<div id="saving">
+		<h2>Saving Journal</h2>
+		<p style = "padding-left:23px; padding-top:16px;">
+		<table id="savingTable">
+			<thead>
+			  <tr>
+				<th class="cell" width=40px>Date</th>
+        		<th class="cell">+/- </th>
+				<th class="cell" width=60px>Amount</th>
+				<th class="cell" width=120px>Note</th>
+				<th class="cell" width=80px>Balance</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <!-- <tr>
+				<td class="cell">3/1</td>
+        <td class="cell">+ </td>
+				<td class="cell">1000</td>
+				<td class="cell">from chequing</td>
+				<td class="cell">1000</td>
+			  </tr>
+			  <tr>
+				<td class="cell">4/15</td>
+        <td class="cell">+ </td>
+				<td class="cell">500</td>
+				<td class="cell">gift</td>
+				<td class="cell">1500</td>
+			  </tr>
+			  <tr>
+				<td class="cell">5/1</td>
+        <td class="cell">+ </td>
+				<td class="cell">1500</td>
+				<td class="cell">from chequing</td>
+				<td class="cell">3000</td>
+			  </tr> -->
+			</tbody>
+		</table></p>
+		<p style="padding-left: 66px;">Date +/- Amount Note</p>
+		<form>
+			<input id="date_input" type="text" placeholder="3/1" style="width: 60px; height: 26px">
+			<select name="dropdown" id="parity_input" size="5" style="width: 35px; height:26px;">
+				<option value="+" selected>+</option>
+				<option value="-">-</option>
+			</select>
+			<input id="amount_input" type="number" placeholder="800" style="width: 110px; height: 26px">
+			<input id="note_input" type="text" placeholder="note" style="width: 140px; height: 26px">
+		</form>
+		<button onclick="addSaving()">ADD</button>
+		
+	</div>
+
+</body>
+</html>

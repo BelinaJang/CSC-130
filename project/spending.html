@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title>Budgeting App</title>
+	<link href="project2-part2-prototype.css" type="text/css" rel="stylesheet">
+	<script src="project2-part2-prototype.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+</head>
+
+<body onload="addToCategoryArray(); checkSpending()">
+	<div class="container">
+	  <a href="saving.html">Saving</a></li>
+	  <a href="spending.html">Spending</a></li>
+	  <a href="calculator.html">Calculator</a></li>
+	</div>
+	
+	<div id="spending">
+				<h2>Spending Journal</h2>
+		<p style = "padding-left:23px; padding-top:16px;">
+    <table id="spendingCategoryTable">
+			<thead>
+			  <tr>
+				<th class="cell" width=110px>Category</th>
+				<th class="cell" width=60px>Price</th>
+			  </tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<table id="spendingTable">
+			<thead>
+			  <tr>
+				<th class="cell" width=60px>Date</th>
+				<th class="cell" width=100px>Name</th>
+				<th class="cell" width=110px>Category</th>
+				<th class="cell" width=60px>Price</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <!-- <tr>
+				<td class="cell">3/5</td>
+				<td class="cell">Costco</td>
+				<td class="cell">Grocery</td>
+				<td class="cell">350</td>
+			  </tr>
+			  <tr>
+				<td class="cell">3/26</td>
+				<td class="cell">Buspass</td>
+				<td class="cell">Transportation</td>
+				<td class="cell">40</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/1</td>
+				<td class="cell">Sushi</td>
+				<td class="cell">Eating out</td>
+				<td class="cell">38</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/7</td>
+				<td class="cell">Metro</td>
+				<td class="cell">Grocery</td>
+				<td class="cell">35</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/13</td>
+				<td class="cell">Ramen</td>
+				<td class="cell">Eating out</td>
+				<td class="cell">32</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/17</td>
+				<td class="cell">Buspass</td>
+				<td class="cell">Transportation</td>
+				<td class="cell">20</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/22</td>
+				<td class="cell">Icecream</td>
+				<td class="cell">Snack</td>
+				<td class="cell">8</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/27</td>
+				<td class="cell">Fido</td>
+				<td class="cell">Bills</td>
+				<td class="cell">70</td>
+			  </tr>
+        <tr>
+				<td class="cell">5/2</td>
+				<td class="cell">Walmart</td>
+				<td class="cell">Grocery</td>
+				<td class="cell">37</td>
+			  </tr> -->
+			</tbody>
+		</table></p>
+		<p style="padding-left: 66px;">Date Name Category Price</p>
+		<form>
+			<input id="spend_date_input" type="text" placeholder="3/1" style="width: 60px; height:25px;">
+			<input id="name_input" type="text" placeholder="Walmart" style="width: 120px; height:25px;">
+			<select name="dropdown" id="category_input" size="5" style="width: 110px; height:25px;">
+				<option value="Grocery" selected>Grocery</option>
+				<option value="Transportation">Transportation</option>
+				<option value="Entertainment">Entertainment</option>
+				<option value="Shopping">Shopping</option>
+				<option value="Eating out">Eating out</option>
+				<option value="Snack">Snack</option>
+				<option value="Bills">Bills</option>
+			</select>
+			<input id="price_input" type="number" placeholder="30" style="width: 55px; height:25px;"><br>
+		</form>
+		<button onclick = "addSpending()">ADD</button>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+
+</body>
+</html>
