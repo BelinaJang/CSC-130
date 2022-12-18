@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>Budgeting App</title>
+	<link href="project2style.css" type="text/css" rel="stylesheet">
+	<script src="project2java.js" defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+</head>
+
+<body onload="addToCategoryArray(); checkSpending()">
+	<div class="container">
+	  <a href="saving.html">Saving</a></li>
+	  <a href="spending.html">Spending</a></li>
+	  <a href="calculator.html">Calculator</a></li>
+	</div>
+	
+	<div id="spending">
+		<h2>Spending Journal</h2>
+		<!-- <p style = "padding-left:23px; padding-top:16px;"> -->
+		
+		<div class="row" style="padding-top:10px; "> <!-- style="padding-left:23px" -->
+			<div class="col-6">
+				<table id="spendingCategoryTable">
+					<thead>
+						<tr>
+							<th class="cell" width=110px>Category</th>
+							<th class="cell" width=60px>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-6">
+			<figure class="highcharts-figure">
+				<div id="colchart"></div>
+			</figure>
+			</div>
+		</div>
+
+		<div class="row" style="justify-content: center">  <!-- style="padding-left:23px" -->
+		<table id="spendingTable">
+			<thead>
+			  <tr>
+				<th class="cell" width=60px>Date</th>
+				<th class="cell" width=100px>Name</th>
+				<th class="cell" width=110px>Category</th>
+				<th class="cell" width=60px>Price</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <!-- <tr>
+				<td class="cell">3/5</td>
+				<td class="cell">Costco</td>
+				<td class="cell">Grocery</td>
+				<td class="cell">350</td>
+			  </tr>
+			  <tr>
+				<td class="cell">3/26</td>
+				<td class="cell">Buspass</td>
+				<td class="cell">Transportation</td>
+				<td class="cell">40</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/1</td>
+				<td class="cell">Sushi</td>
+				<td class="cell">Eating out</td>
+				<td class="cell">38</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/7</td>
+				<td class="cell">Metro</td>
+				<td class="cell">Grocery</td>
+				<td class="cell">35</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/13</td>
+				<td class="cell">Ramen</td>
+				<td class="cell">Eating out</td>
+				<td class="cell">32</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/17</td>
+				<td class="cell">Buspass</td>
+				<td class="cell">Transportation</td>
+				<td class="cell">20</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/22</td>
+				<td class="cell">Icecream</td>
+				<td class="cell">Snack</td>
+				<td class="cell">8</td>
+			  </tr>
+        <tr>
+				<td class="cell">4/27</td>
+				<td class="cell">Fido</td>
+				<td class="cell">Bills</td>
+				<td class="cell">70</td>
+			  </tr>
+        <tr>
+				<td class="cell">5/2</td>
+				<td class="cell">Walmart</td>
+				<td class="cell">Grocery</td>
+				<td class="cell">37</td>
+			  </tr> -->
+			</tbody>
+		</table>
+		</div>
+		<!-- </p> -->
+
+		<!-- <p style="padding-left: 66px;">Date Name Category Price</p> -->
+		<form style="margin: 10px;">
+			<input id="spend_date_input" type="text" placeholder="3/1" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 60px; height:20px;">
+			<input id="name_input" type="text" placeholder="Walmart" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 120px; height:20px;">
+			<select name="dropdown" id="category_input" size="5" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 110px; height:20px;">
+				<option value="Grocery" selected>Grocery</option>
+				<option value="Transportation">Transportation</option>
+				<option value="Entertainment">Entertainment</option>
+				<option value="Shopping">Shopping</option>
+				<option value="Eating out">Eating out</option>
+				<option value="Snack">Snack</option>
+				<option value="Bills">Bills</option>
+			</select>
+			<input id="price_input" type="number" placeholder="30" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 55px; height:20px;"><br>
+		</form>
+		<button onclick = "addSpending()">ADD</button>
+		<!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+	</div>
+
+</body>
+</html>
