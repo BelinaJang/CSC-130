@@ -4,7 +4,7 @@ let categories = ["Grocery", "Transportation", "Entertainment", "Shopping", "Eat
 let user = {
 	"FirstName" : "Belina",
 	"LastName" : "Jang",
-	"DOB" :"19990910",
+	"DOB" :"20000000",
 	"AcountBalance" : [
 		{
 		"type" : "Saving",
