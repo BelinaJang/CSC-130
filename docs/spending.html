@@ -3,27 +3,33 @@
 	<title>Budgeting App</title>
 	<link href="project2style.css" type="text/css" rel="stylesheet">
 	<script src="project2java.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<!-- For pie chart -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
 
-<body onload="addToCategoryArray(); checkSpending()">
-	<div class="container">
-	  <a href="saving.html">Saving</a></li>
-	  <a href="spending.html">Spending</a></li>
-	  <a href="calculator.html">Calculator</a></li>
+<body onload="addToCategoryArray(); checkSpending(); reChart()">
+	<div class="menu">
+		<a href="saving.html" style="font-size: 38.4px; font-family: Helvetica;">Saving</a></li>
+		<a href="project2.html" style="font-size: 38.4px; font-family: Helvetica;">Home</a></li>
+		<a href="spending.html" style="font-size: 38.4px; font-family: Helvetica;">Spending</a></li>
+		<!-- <a href="calculator.html" style="font-size: 38.4px; font-family: Helvetica;">Calculator</a></li> -->
 	</div>
-	
-	<div id="spending">
-		<h2>Spending Journal</h2>
-		<!-- <p style = "padding-left:23px; padding-top:16px;"> -->
+
+	<div id="spending" style="width: 943px;">
+		<h2 style="margin-bottom: 0px;">Spending Journal</h2>
 		
-		<div class="row" style="padding-top:10px; "> <!-- style="padding-left:23px" -->
+		<div class="row"> 
 			<div class="col-6">
 				<table id="spendingCategoryTable">
 					<thead>
 						<tr>
-							<th class="cell" width=110px>Category</th>
-							<th class="cell" width=60px>Price</th>
+							<th class="cell" width=264px>Category</th>
+							<th class="cell" width=144px>Price</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,24 +37,24 @@
 				</table>
 			</div>
 			<div class="col-6">
-			<figure class="highcharts-figure">
-				<div id="colchart"></div>
-			</figure>
+				<figure class="highcharts-figure" style="width: 380px; height: 320px;">
+					<div id="container"></div>
+				</figure>
 			</div>
 		</div>
 
-		<div class="row" style="justify-content: center">  <!-- style="padding-left:23px" -->
+		<div class="row" style="justify-content: center">
 		<table id="spendingTable">
 			<thead>
 			  <tr>
-				<th class="cell" width=60px>Date</th>
-				<th class="cell" width=100px>Name</th>
-				<th class="cell" width=110px>Category</th>
-				<th class="cell" width=60px>Price</th>
+				<th class="cell" width=150px>Date</th>
+				<th class="cell" width=255px>Name</th>
+				<th class="cell" width=277px>Category</th>
+				<th class="cell" width=155px>Price</th>
 			  </tr>
 			</thead>
 			<tbody>
-			  <!-- <tr>
+			  <!-- <tr> 
 				<td class="cell">3/5</td>
 				<td class="cell">Costco</td>
 				<td class="cell">Grocery</td>
@@ -105,13 +111,12 @@
 			</tbody>
 		</table>
 		</div>
-		<!-- </p> -->
 
-		<!-- <p style="padding-left: 66px;">Date Name Category Price</p> -->
-		<form style="margin: 10px;">
-			<input id="spend_date_input" type="text" placeholder="3/1" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 60px; height:20px;">
-			<input id="name_input" type="text" placeholder="Walmart" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 120px; height:20px;">
-			<select name="dropdown" id="category_input" size="5" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 110px; height:20px;">
+		<div class="row">
+		<form style="margin-top: 30px;">
+			<input id="spend_date_input" type="text" placeholder="3/1" style="border:2.4px solid gray; border-radius: 7.2px; color: #555555; font-size: 28.8px; width: 145px; height:48px; margin-right: 7px;">
+			<input id="name_input" type="text" placeholder="Walmart" style="border:2.4px solid gray; border-radius: 7.2px; color: #555555; font-size: 28.8px; width: 256px; height:48px; margin-right: 7px;">
+			<select name="dropdown" id="category_input" size="5" style="border:2.4px solid gray; border-radius: 7.2px; color: #555555; font-size: 28.8px; width: 277px; height:48px; margin-right: 7px;">
 				<option value="Grocery" selected>Grocery</option>
 				<option value="Transportation">Transportation</option>
 				<option value="Entertainment">Entertainment</option>
@@ -120,10 +125,11 @@
 				<option value="Snack">Snack</option>
 				<option value="Bills">Bills</option>
 			</select>
-			<input id="price_input" type="number" placeholder="30" style="border:1px solid gray; border-radius: 3px; color: #555555 ; font-size: 12px; width: 55px; height:20px;"><br>
+			<input id="price_input" type="number" placeholder="30" style="border:2.4px solid gray; border-radius: 7.2px; color: #555555 ; font-size: 28.8px; width: 160px; height:48px;"><br>
 		</form>
-		<button onclick = "addSpending()">ADD</button>
-		<!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+		<button onclick = "addSpending(); reChart()">ADD</button>
+
+		</div>
 	</div>
 
 </body>
