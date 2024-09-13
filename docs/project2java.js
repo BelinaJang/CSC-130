@@ -1,10 +1,19 @@
 var i = 0, date = [], parity = [], amount = [], note = [], balance = [], savedate = [], savename = [], savecategory = [], saveamount = [];
-let categories = ["Grocery", "Transportation", "Entertainment", "Shopping", "Eating out", "Snack", "Bills"]
+let categories = ["Grocery", "Transportation", "Entertainment", "Shopping", "Eating out", "Snack", "Bills"];
+let categorypercent = [];
+// var spendingarray = [];
+var spendarray = [{name: 'Grocery', y: 0},
+		{name: 'Transportation', y: 0},
+		{name: 'Entertainment', y: 0},
+		{name: 'Shopping', y: 0},
+		{name: 'Eating out', y: 0},
+		{name: 'Snack', y: 0},
+		{name: 'Bills', y: 0}];
 
 let user = {
 	"FirstName" : "Belina",
 	"LastName" : "Jang",
-	"DOB" :"20000000",
+	"DOB" :"19990910",
 	"AcountBalance" : [
 		{
 		"type" : "Saving",
@@ -88,6 +97,126 @@ if(localStorage.getItem("ls_user") === null){
 
 	console.log("tempObj: ");
 	console.log(tempObj);
+}
+
+function reSpendingTable(){
+	for (let i = 0; i < tempObj.SpendingHistory.length; i++) {
+		if (date.find((element => element == tempObj.SpendingHistory[i].date)) == null) {
+			date[i] = tempObj.SpendingHistory[i].date;
+			amount[i] = tempObj.SpendingHistory[i].amount;
+		} else {
+			// when there's other spending for the same day
+			amount[date.findIndex((element => element == tempObj.SpendingHistory[i].date))] += tempObj.SpendingHistory[i].amount;
+		}
+	}
+
+	//remove empty entries
+	date = date.filter(Boolean);
+	amount = amount.filter(Boolean);
+
+	//chart
+	Highcharts.chart('colchart-container', {
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: ''
+		},
+		xAxis: {
+			categories: date,
+			crosshair: true
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'dollars ($)'
+			}
+		},
+		tooltip: {
+			headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+			pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+				'<td style="padding:0"><b>{point.y:.1f}$</b></td></tr>',
+			footerFormat: '</table>',
+			shared: true,
+			useHTML: true
+		},
+		plotOptions: {
+			column: {
+				pointPadding: 0.2,
+				borderWidth: 0,
+			}
+		},
+		series: [{
+			name: 'Spending',
+			data: amount,
+			color: '#6083bc'
+		}/*, {
+
+			name: 'Berlin',
+			data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8,
+				51.1]
+	
+		}*/]
+	});
+}
+
+function reSavingTable() {
+	for (let i = 0; i < tempObj.SavingHistory.length; i++) {
+		if (date.find((element => element == tempObj.SavingHistory[i].date)) == null) {
+			date[i] = tempObj.SavingHistory[i].date;
+			amount[i] = tempObj.SavingHistory[i].amount;
+			balance[i] = tempObj.SavingHistory[i].balance;
+		} else {
+			// when there's other saving transaction for the same day
+			if (tempObj.SavingHistory[i].parity == '-') {
+				amount[date.findIndex((element => element == tempObj.SavingHistory[i].date))] -= tempObj.SavingHistory[i].amount;
+				balance[date.findIndex((element => element == tempObj.SavingHistory[i].date))] -= tempObj.SavingHistory[i].amount;
+			} else {
+				amount[date.findIndex((element => element == tempObj.SavingHistory[i].date))] += tempObj.SavingHistory[i].amount;
+				balance[date.findIndex((element => element == tempObj.SavingHistory[i].date))] += tempObj.SavingHistory[i].amount;
+			}
+		}
+	}
+
+	//remove empty entries
+	date = date.filter(Boolean);
+	amount = amount.filter(Boolean);
+	balance = balance.filter(Boolean);
+
+	Highcharts.chart('linechart-container', {
+		chart: {
+			type: 'line'
+		},
+		title: {
+			text: ''
+		},
+		xAxis: {
+			categories: date
+		},
+		yAxis: {
+			title: {
+				text: 'dollars ($)'
+			}
+		},
+		plotOptions: {
+			line: {
+				dataLabels: {
+					enabled: true
+				},
+				enableMouseTracking: false
+			}
+		},
+		series: [{
+			name: 'Saving amount',
+			data: amount,
+			color: '#6083bc'
+		}, {
+			name: 'Saving balance',
+			data: balance,
+			color: '#f1dfd8'//'#e3beb0'
+		}]
+	});
+
 }
 
 // loading saving journal from local storage
@@ -329,12 +458,109 @@ function addToCategoryArray(){
 		}
 	}
 	console.log(categoryTotal);
+	
+	totalspending = 0;
+	for (let i = 0; i  < categoryTotal.length; i++) {
+		totalspending += categoryTotal[i];
+	}
+
+	console.log(totalspending);
 
 	for (let k = 0; k < categories.length; k++){
+		categorypercent[k] = (categoryTotal[k]/totalspending)*100; 
+		console.log("percent k:"+ k + "  "+categorypercent[k]);
 		let newRow = "<tr>"
 		newRow += '<td class="cell">' + categories[k] + "</td>";
 		newRow += '<td class="cell">' + categoryTotal[k] + "</td></tr>";
 	  	document.getElementById("spendingCategoryTable").innerHTML += newRow;
 	// document.getElementById("spendingCategoryTable").insertAdjacentHTML = newRow;
 	}
+
+	/*for (let i = 0; i < categories.length; i++) {
+		let obj = {name: '', y: 0};
+		let key = categories[i];
+		obj['name'] = key;
+		obj['y'] = parseFloat(categoryTotal[i]);
+		spendingarray[i] = obj;
+	}
+	console.log(spendingarray);*/
+
+	for (let i = 0; i < categories.length; i++) {
+		spendarray[i].y = parseFloat(categoryTotal[i]);
+	}
+	console.log("spend array: ");
+	console.log(spendarray);
+}
+
+// var spendingarray = [];
+// for (let i = 0; i < categories.length; i++) {
+// 	let obj = {name: categories[i], y: 1};
+// 	let key = categories[i];
+// 	// let val = categorypercent[i];
+// 	obj['name'] = key;
+// 	obj['y'] = Number(categorypercent[i]);
+// 	spendingarray[i] = obj;
+// }
+// console.log(spendingarray);
+
+/* Pie chart #5a9ff3 0%, #d1937c */
+
+function reChart(){
+	// Make monochrome colors
+	var pieColors = (function () {
+		var colors = ['#d1937c', '#e3beb0', '#f1dfd8', '#dfe6f2' , '#a0b5d7', '#809cc9','#6083bc']
+			// base = Highcharts.getOptions().colors[0],
+			// i;
+	
+		// for (i = 0; i < 10; i += 1) {
+		// 	// Start out with a darkened base color (negative brighten), and end
+		// 	// up with a much brighter color
+		// 	colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+		// }
+		return colors;
+	}());
+
+	// Build the chart
+	Highcharts.chart('container', {
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		},
+		title: {
+			text: '',
+			align: 'center'
+		},
+		tooltip: {
+			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		},
+		accessibility: {
+			point: {
+				valueSuffix: '%'
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				colors: pieColors,
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+					distance: -50,
+					filter: {
+						property: 'percentage',
+						operator: '>',
+						value: 4
+					}
+				}
+			}
+		},
+		series: [{
+			name: 'Percent',
+			data: spendarray
+		}]
+	});
+	
 }
