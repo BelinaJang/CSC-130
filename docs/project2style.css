@@ -13,10 +13,6 @@ h2{
 	padding-top:132px;
 }
 
-/* img{
-	padding-left: 88.8px;
-} */
-
 .menu{
 	list-style: none;
 	background: linear-gradient(to left, #5a9ff3 0%, #d1937c 100%);
@@ -27,7 +23,6 @@ h2{
 	width: 720px;
 	height: 98.4px;
 	top: 1380px;
-	/* margin-left: 37px; */
 }
 
 .menu a {
@@ -40,7 +35,6 @@ h2{
 }
 
 .menu a:hover {
-	/* background-color: #8fb1e9; */
 	background-color: rgba(255, 255, 255, 0.300);
 }
 
