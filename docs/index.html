@@ -3,20 +3,35 @@
 	<title>Budgeting App</title>
 	<link href="project2style.css" type="text/css" rel="stylesheet">
 	<script src="project2java.js" defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- saving line chart -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<!-- checking column chart -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
-<body>
-	<div class="container">
-	  <a href="saving.html">Saving</a></li>
-	  <a href="spending.html">Spending</a></li>
-	  <a href="calculator.html">Calculator</a></li>
+<body onload="reSavingTable(); reSpendingTable()">
+	<div class="menu">
+	  <a href="saving.html" style="font-size: 38.4px; font-family: Helvetica;">Saving</a></li>
+	  <a href="project2.html" style="font-size: 38.4px; font-family: Helvetica;">Home</a></li>
+	  <a href="spending.html" style="font-size: 38.4px; font-family: Helvetica;">Spending</a></li>
+	  <!-- <a href="calculator.html" style="font-size: 38.4px; font-family: Helvetica;">Calculator</a></li> -->
 	</div>
 	
-	<div id = "startpage">
+	<div id = "startpage" style="width: 943px;">
 		<h2>Spending Trends</h2>
-		<img src="spendingtrends.png" alt="spendingtrends.png" width="300" height="170">
+		<figure class="colchart-figure">
+			<div id="colchart-container"></div>
+		</figure>
 		<h1>Saving Trends</h1>
-		<img src="savingtrends.png" alt="savingtrends.png" width="300" height="170">
+		<figure class="linechart-figure">
+			<div id="linechart-container" ></div>
+		</figure>
 	</div>
 
 </body>
